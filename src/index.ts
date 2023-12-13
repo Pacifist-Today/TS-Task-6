@@ -1,26 +1,24 @@
 abstract class Figure {
     private _name: string
     private _color: string
+    area: number
 
     constructor (name: string, color: string) {
         this._name = name
         this._color = color
     }
+
+    abstract calculateArea(): number
 }
 
-interface IAreaCalculation {
-    area: number,
-    calculateArea(): number,
-}
-
-interface IPrint extends IAreaCalculation {
+interface IPrint {
     print(): string
 }
 
-class Circle extends Figure implements IAreaCalculation {
+class Circle extends Figure {
 
-    area: number
     private _radius: number
+    area: number
 
     constructor (name: string, color: string, radius: number) {
         super(name, color)
@@ -84,11 +82,11 @@ class Square extends Figure implements IPrint {
     }
 }
 
-class Triangle extends Figure implements IAreaCalculation {
+class Triangle extends Figure {
 
-    area: number
     private _base: number
     private _height: number
+    area: number
 
     constructor (name: string, color: string, base: number, height: number) {
         super(name, color)
